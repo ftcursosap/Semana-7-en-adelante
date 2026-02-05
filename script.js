@@ -1,15 +1,20 @@
 console.log("Conexion con Javascript\n\n");
 //Creacion de un array
 let tareas = [];
+
+//push agrega elementos al final del array
+tareas.push("Estudiar");
+tareas.push("Practicar");
 console.log(tareas);
 
-//Array con datos
-let colores = ["rojo", "verde", "azul"];
-console.log(colores);
+//pop elimina elementos al final del array
+tareas.pop();
+console.log(tareas);
 
-//Acceder por indice
-console.log(colores[0]);
-console.log(colores[1]);
+//unshift agrega elementos al inicio del array
+tareas.unshift("Desayunar");
+console.log(tareas);
 
-//Tamaño del array
-console.log(colores.length);
+//shift elimina elementos del inicio del array
+tareas.shift();
+console.log(tareas);
