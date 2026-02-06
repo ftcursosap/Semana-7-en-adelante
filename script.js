@@ -1,20 +1,13 @@
 console.log("Conexion con Javascript\n\n");
 //Creacion de un array
-let tareas = [];
+let tareas = ["Estudiar", "Practicar", "Descansar"];
 
-//push agrega elementos al final del array
-tareas.push("Estudiar");
-tareas.push("Practicar");
-console.log(tareas);
+//Bucle for
+for (let i = 0; i < tareas.length; i++) {
+    console.log(tareas[i]);    
+}
 
-//pop elimina elementos al final del array
-tareas.pop();
-console.log(tareas);
-
-//unshift agrega elementos al inicio del array
-tareas.unshift("Desayunar");
-console.log(tareas);
-
-//shift elimina elementos del inicio del array
-tareas.shift();
-console.log(tareas);
+//Bucle ForEach
+tareas.forEach(function (tarea) {
+    console.log(tarea);
+})
