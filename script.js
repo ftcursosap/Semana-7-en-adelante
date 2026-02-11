@@ -1,48 +1,38 @@
 console.log("Conexion con Javascript\n\n");
-//Creacion de un Array de objetos
-let tareas = [
-    {titulo: "Estudiar", completada: false},
-    {titulo: "Practicar", completada: true},
-    {titulo: "Descansar", completada: false}
+//Semana 7 - Dia 6
+let contador = 0;
+let usuarios = [
+    {nombre: "Alan", edad: 29, activo: true},
+    {nombre: "Alma", edad: 31, activo: true},
+    {nombre: "Emma", edad: 2, activo: false},    
+    {nombre: "Irma", edad: 24, activo: false}  
 ];
-
-console.log(tareas);
-
-//Recorrer array de objetos
-tareas.forEach(function (tarea) {
-    console.log(tarea.titulo);
-    console.log(tarea.completada);
-});
-
-//Acceder a un objeto especifico
-console.log(tareas[0].titulo);
-
-//Modificar un objeto dentro del array
-tareas[0].completada = true;
-console.log(tareas);
-
-//Ejercicios de prueba
-//1
-let personas = [
-    {nombre: "Alan", edad: 29},
-    {nombre: "Alma", edad: 31},
-    {nombre: "Emma", edad: 2},
-    {nombre: "Irma", edad: 24}
-]
-console.log(personas);
+console.log(usuarios);
 
 //2
-personas.forEach(function (persona) {
-    console.log(persona.nombre);
+usuarios.forEach(function (usuario) {
+    console.log(usuario.nombre);
+    if(usuario.activo === true) {
+        console.log(usuario);
+        contador++;
+    }
 });
+console.log("Numero de usuarios activos es: "+contador)
 
 //3
-personas[0].edad = 30;
-console.log(personas);
+usuarios[0].edad = 30;
+usuarios[3].activo = true;
+
+usuarios.push({
+    nombre: "Itzel",
+    edad: 16,
+    activo: true
+});
+console.log(usuarios);
+console.log("El numero de usuarios es: "+usuarios.length);
 
 //4
-personas.push({
-    nombre: "Itzel",
-    edad: 16
-});
-console.log(personas);
+usuarios.pop();
+console.log(usuarios);
+
+console.log("El numero de usuarios es: "+usuarios.length);
