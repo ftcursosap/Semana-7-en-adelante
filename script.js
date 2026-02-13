@@ -4,29 +4,30 @@ const boton = document.getElementById("btnCargar");
 const lista = document.getElementById("lista");
 const estado = document.getElementById("estado");
 
-boton.addEventListener("click", function() {
+boton.addEventListener("click", cargarPosts);
+
+async function cargarPosts() {
     estado.textContent = "Cargando...";
-    lista.innerHTML = "";
+    lista.innerHTML =  "";
 
-    fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
-        .then( function (response) {
-            if(!response.ok){
-                throw new Error("Error en la peticion");
-            }
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=8");
 
-            return response.json();
-        })
-        .then(function (data) {
-            estado.textContent = "";
+        if(!response.ok) {
+            throw new Error("Error en la peticion");
+        }
 
-            data.forEach(function (post) {
-                const item = document.createElement("li");
-                item.textContent = post.title;
-                lista.appendChild(item);
-            });
-        })
-        .catch(function (error) {
-            estado.textContent = "Ocurrio un error al cargar los datos";
-            console.error(error)
+        const data = await response.json();
+
+        estado.textContent = "";
+
+        data.forEach(function (posts) {
+            const item = document.createElement("li");
+            item.textContent = posts.title;
+            lista.appendChild(item);
         });
-});
+    }   catch(error) {
+        estado.textContent = "Ocurrio un error al cargar los datos";
+        console.error(error);
+    }
+}
