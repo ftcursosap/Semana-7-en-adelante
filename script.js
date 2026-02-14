@@ -1,33 +1,31 @@
-console.log("Conexion con Javascript\n\n");
-//Semana 8 - Dia 4
-const boton = document.getElementById("btnCargar");
+console.log("JavaScript conectado correctamente\n\n\nPowered By Alan");
+
+const btn = document.getElementById("btnCargar");
 const lista = document.getElementById("lista");
 const estado = document.getElementById("estado");
 
-boton.addEventListener("click", cargarPosts);
+btn.addEventListener("click", cargarPost);
 
-async function cargarPosts() {
-    estado.textContent = "Cargando...";
-    lista.innerHTML =  "";
+async function cargarPost() {
+    estado.textContent = "Cargando datos, espere un momento...";
 
     try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=8");
-
-        if(!response.ok) {
-            throw new Error("Error en la peticion");
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+        if(!response.ok){
+            throw new Error("Error al cargar la informacion");
         }
 
-        const data = await response.json();
-
+        lista.innerHTML = "";
         estado.textContent = "";
 
-        data.forEach(function (posts) {
+        const data = await response.json();
+        data.forEach(function(posts) {
             const item = document.createElement("li");
             item.textContent = posts.title;
             lista.appendChild(item);
         });
-    }   catch(error) {
-        estado.textContent = "Ocurrio un error al cargar los datos";
+    } catch (error) {
+        estado.textContent = "Error al cargar la informacion";
         console.error(error);
     }
 }
